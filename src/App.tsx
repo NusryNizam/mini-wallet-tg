@@ -5,7 +5,7 @@ import Login from './components/Login/Login';
 function App() {
 
   useEffect(() => {
-    console.log(window.Telegram.WebApp);
+    console.log((window as any).Telegram.WebApp);
   }, [])
 
   return (
