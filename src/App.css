@@ -1,0 +1,12 @@
+.App {
+  max-width: 600px;
+}
+
+.main {
+  background-color: #f6f6f6;
+  background-color: var(--tg-color-scheme);
+
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
