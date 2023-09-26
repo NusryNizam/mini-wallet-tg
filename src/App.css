@@ -3,21 +3,16 @@
   max-width: 400px;
   min-width: 300px;
   margin: auto;
-  border: 1px solid blue;
   padding: 20px;
   min-height: 100vh;
   min-height: 100dvh;
 }
 
 .main {
-  /* background-color: #f6f6f6; */
-  /* background-color: red; */
   background-color: var(--accent-light);
-  /* background-color: var(--tg-color-scheme); */
-
   display: grid;
   place-items: center;
-  /* height: 100vh; */
+  /* background-color: var(--tg-color-scheme); */
 }
 
 label, input, button {

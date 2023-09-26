@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Login from './components/Login/Login.tsx'
-import Signup from './components/Signup/Signup.tsx'
-import Onboarding from './components/Onboarding/Onboarding.tsx'
+import Login from './screens/Login/Login.tsx'
+import Signup from './screens/Signup/Signup.tsx'
+import Onboarding from './screens/Onboarding/Onboarding.tsx'
+import Dashboard from './screens/Dashboard/Dashboard.tsx'
+import Main from './screens/Main/Main.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup/>
+  },
+  {
+    path: '/main/*',
+    element: <Main/>
   },
 ])
 

@@ -1,7 +1,7 @@
 import './Onboarding.css'
 import image from '../../assets/images/image.png'
 import logo from '../../assets/images/logo.png'
-import CustomButton from '../CustomButton/CustomButton'
+import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigate } from 'react-router-dom'
 
 const Onboarding = () => {

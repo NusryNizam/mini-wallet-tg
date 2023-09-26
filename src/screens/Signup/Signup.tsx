@@ -1,36 +1,38 @@
-import CustomButton from '../CustomButton/CustomButton'
-import './Login.css'
+import CustomButton from '../../components/CustomButton/CustomButton'
+import './Signup.css'
 import { Link, useNavigate } from 'react-router-dom'
 
+const Signup = () => {
 
-const Login = () => {
     const navigate = useNavigate()
 
     const handleClick = () => {
-        navigate('dashboard')
+        navigate('../login')
     }
 
+
     return (
-        <div className="Login">
-            <h2 className='title'>Login</h2>
-            <form className='login-form'>
+        <div className="Signup">
+            <h2 className='title'>Signup</h2>
+            <form className='signup-form'>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
                     <input type="text" id="email" name="email" required />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" required />
                 </div>
                 <br />
-                <CustomButton onClick={handleClick}>Login</CustomButton>
+                <CustomButton onClick={handleClick}>Signup</CustomButton>
             </form>
-            <small>Don't have an account?
+            <br />
+            <small>Already have an account?
                 <br />
-                <Link to='../signup'>Create one</Link>
+                <Link to='../login'>Login</Link>
             </small>
         </div>
     )
 }
 
-export default Login
+export default Signup

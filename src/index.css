@@ -20,6 +20,8 @@
   --accent-darker: #07264E;
   --white: #ffffff;
   --primary-light: #EAEAEA;
+  --primary-light-hover: #ebebeb;
+  --primary-light-active: #e6e6e6;
   --primary-normal: #292929;
 
   background-color: var(--accent-light);
