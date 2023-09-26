@@ -1,5 +1,4 @@
 import Card from '../../components/Card/Card';
-import NavBar from '../../components/NavBar/NavBar';
 import './Dashboard.css';
 
 const Dashboard = () => {
