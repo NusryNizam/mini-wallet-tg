@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import App from './App.tsx'
+import Onboarding from './screens/Onboarding/Onboarding.tsx'
 import Login from './screens/Login/Login.tsx'
 import Signup from './screens/Signup/Signup.tsx'
-import Onboarding from './screens/Onboarding/Onboarding.tsx'
 import Main from './screens/Main/Main.tsx'
+import './index.css'
 
 const router = createBrowserRouter([
   {
