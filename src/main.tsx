@@ -11,26 +11,26 @@ import Main from './screens/Main/Main.tsx'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Onboarding/>
+    element: <Onboarding />,
   },
   {
     path: 'login',
-    element: <Login/>
+    element: <Login />,
   },
   {
     path: '/signup',
-    element: <Signup/>
+    element: <Signup />,
   },
   {
     path: '/main/*',
-    element: <Main/>
+    element: <Main />,
   },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App>
-    <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </App>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

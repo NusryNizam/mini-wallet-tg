@@ -7,7 +7,7 @@ import './Main.css'
 
 const Main = () => {
   return (
-    <div className='Main'>
+    <div className="Main">
       <Routes>
         <Route path="/" element={<Navigate to="dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />

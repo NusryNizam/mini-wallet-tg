@@ -1,19 +1,19 @@
 .Onboarding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .logo-container {
-    min-height: '100px';
-    align-self: 'center';
-    display: flex;
+  min-height: '100px';
+  align-self: 'center';
+  display: flex;
 }
 
 .tagline h3 {
-    text-align: center;
-    margin: auto;
-    margin-bottom: 1rem;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 1rem;
 }

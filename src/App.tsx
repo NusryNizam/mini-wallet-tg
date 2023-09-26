@@ -10,11 +10,7 @@ function App({ children }: AppProp) {
     console.log((window as any).Telegram.WebApp)
   }, [])
 
-  return (
-    <div className="App">
-      {children}
-    </div>
-  )
+  return <div className="App">{children}</div>
 }
 
 export default App
