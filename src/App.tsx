@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import './App.css'
-import Login from './components/Login/Login';
 
-function App() {
+type AppProp = {
+  children: React.ReactNode
+}
+
+function App({children}:AppProp) {
 
   useEffect(() => {
     console.log((window as any).Telegram.WebApp);
@@ -10,9 +13,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="main">
-        <Login />
-      </div>
+      {/* <div className="main"> */}
+        {children}
+      {/* </div> */}
     </div>
   )
 }

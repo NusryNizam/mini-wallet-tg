@@ -11,10 +11,27 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --accent-light: #E8F0FC;
+  --accent-light-hover: #DCE9FA;
+  --accent-light-active: #B6D2F5;
+  --accent-normal: #156DE0;
+  --accent-dark: #1052A8;
+  --accent-darker: #07264E;
+  --white: #ffffff;
+  --primary-light: #EAEAEA;
+  --primary-normal: #292929;
+
+  background-color: var(--accent-light);
+
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  color: var(--accent-normal)
 }

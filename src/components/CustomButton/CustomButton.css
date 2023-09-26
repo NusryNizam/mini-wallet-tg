@@ -1,0 +1,18 @@
+.CustomButton {
+    background-color: var(--accent-normal);
+    padding: 1rem;
+    color: var(--white);
+    font-weight: bold;
+    border: 1px solid var(--accent-normal);
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.CustomButton:hover {
+    background-color: var(--accent-dark);
+}
+
+.CustomButton:active {
+    background-color: var(--accent-darker);
+}

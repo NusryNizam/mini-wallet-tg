@@ -1,0 +1,22 @@
+.Onboarding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    /* min-height: 100dvh; */
+}
+
+.logo-container {
+    min-height: '100px';
+    align-self: 'center';
+    display: flex;
+}
+
+.tagline h3 {
+    /* width: 90%; */
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1rem;
+}
