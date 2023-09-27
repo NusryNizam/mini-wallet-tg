@@ -1,5 +1,8 @@
 .Main {
   width: 100%;
+  /* overflow: auto;
+  scrollbar-width: thin;*/
+
 }
 .nav-container {
   position: absolute;

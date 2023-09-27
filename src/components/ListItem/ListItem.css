@@ -1,0 +1,37 @@
+.ListItem {
+    background-color: var(--white);
+    padding-block: 12px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+.ListItem > div:nth-child(1){
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ListItem > div:nth-child(2){
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.8rem
+}
+
+.name {
+    font-size: 1rem;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: var(--grey);
+}
+
+.amount {
+    font-size: 1rem;
+    font-weight: bold;
+}

@@ -1,12 +1,14 @@
 import './CustomButton.css'
 
 type CustomButtonPropType = {
-    onClick: () => void
+    onClick?: () => void
     children: React.ReactNode
+    isSubmitType?: boolean
 }
-const CustomButton = ({children, onClick}: CustomButtonPropType) => {
+const CustomButton = (props: CustomButtonPropType) => {
+  const {children, onClick, isSubmitType = false} = props
   return (
-    <button className="CustomButton" onClick={onClick}>{children}</button>
+    <button type={isSubmitType ? 'submit' : 'button'} className="CustomButton" onClick={onClick}>{children}</button>
   )
 }
 

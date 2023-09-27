@@ -1,0 +1,9 @@
+.Finances {
+  padding-bottom: 80px;
+}
+.list {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 0.1rem 1rem;
+    border: 1px solid var(--primary-light)
+}

@@ -23,6 +23,7 @@
   --primary-light-hover: #f8f8f8;
   --primary-light-active: #e6e6e6;
   --primary-normal: #292929;
+  --grey: #737373;
 
   background-color: var(--accent-light);
 }
