@@ -16,3 +16,17 @@
 .CustomButton:active {
     background-color: var(--accent-darker);
 }
+
+.SecondaryButton {
+    background-color: var(--accent-light);
+    border: 1px solid var(--accent-light);
+    color: var(--accent-normal);
+}
+
+.SecondaryButton:hover {
+    background-color: var(--accent-light-hover);
+}
+
+.SecondaryButton:active {
+    background-color: var(--accent-light-active);
+}

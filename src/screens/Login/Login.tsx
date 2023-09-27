@@ -18,6 +18,7 @@ const Login = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log(formData); 
+    navigate('../main')
   }
 
   return (

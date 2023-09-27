@@ -17,13 +17,13 @@
   width: 100%;
 }
 
-.input-group label {
+.input-group label, .input-group select {
   display: block;
   margin-bottom: 5px;
   width: 100%;
 }
 
-.input-group input {
+.input-group input, .input-group select {
   /* width: 100%; */
   padding: 16px;
   border: 1px solid var(--primary-light);
