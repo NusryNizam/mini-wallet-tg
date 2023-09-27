@@ -16,6 +16,7 @@
     background-color: var(--white);
     padding: 1.5rem;
     border-radius: 8px 8px 0px 0px;
+    overflow: auto;
 }
 
 .cancelButtonContainer {

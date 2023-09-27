@@ -63,7 +63,7 @@ const Signup = () => {
         <CustomButton isSubmitType={true}>Signup</CustomButton>
       </form>
       <br />
-      <small>
+      <small className='small-text'>
         Already have an account?
         <br />
         <Link to="../login">Login</Link>
