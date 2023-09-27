@@ -27,7 +27,7 @@ const AddFinancesForm = () => {
         <div className="input-group">
           <label htmlFor="financeType">Finance Type</label>
           <input
-            type="financeType"
+            type="text"
             id="financeType"
             name="financeType"
             required

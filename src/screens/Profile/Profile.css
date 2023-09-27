@@ -1,0 +1,28 @@
+.email {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pressables {
+    margin-top: 2rem;
+}
+.pressables > button {
+    color: var(--accent-dark);
+    display: block;
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.pressables > button:hover {
+    background-color: var(--accent-light-hover);
+}
+
+.pressables > button:active {
+    background-color: var(--accent-light-active);
+}

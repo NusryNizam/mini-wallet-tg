@@ -6,6 +6,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import './Main.css'
 import BottomSheet from '../../components/BottomSheet/BottomSheet'
 import AddFinancesForm from '../AddFinancesForm/AddFinancesForm'
+import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm'
 
 const Main = () => {
   const navigator = useNavigate()
@@ -15,9 +16,29 @@ const Main = () => {
         <Route path="/" element={<Navigate to="dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/finances" element={<Finances />}>
-          <Route path='add' element={<BottomSheet onCloseModal={() => {navigator('finances')}} children={<AddFinancesForm/>}/>} />
+          <Route
+            path="add"
+            element={
+              <BottomSheet
+                onCloseModal={() => {
+                  navigator('finances')
+                }}
+                children={<AddFinancesForm />}
+              />
+            }
+          />
         </Route>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />}>
+          <Route
+            path="change-password"
+            element={
+              <BottomSheet
+                onCloseModal={() => navigator('profile')}
+                children={<ChangePasswordForm />}
+              />
+            }
+          />
+        </Route>
       </Routes>
       <div className="nav-container">
         <NavBar />
