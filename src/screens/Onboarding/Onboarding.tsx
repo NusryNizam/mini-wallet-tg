@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import image from '../../assets/images/image.png'
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/mini-wallet-logo.png'
 import './Onboarding.css'
 
 const Onboarding = () => {
@@ -14,7 +14,7 @@ const Onboarding = () => {
       <div className="logo-container">
         <img src={logo} alt="" />
       </div>
-      <div>
+      <div className="main-image-container">
         <img src={image} alt="" />
       </div>
       <section className="tagline">

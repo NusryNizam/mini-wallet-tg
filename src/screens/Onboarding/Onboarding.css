@@ -10,6 +10,16 @@
   min-height: '100px';
   align-self: 'center';
   display: flex;
+  margin-top: auto;
+}
+
+.logo-container img {
+  max-width: 220px;
+  height: auto;
+}
+
+.main-image-container {
+  margin-block: auto;
 }
 
 .tagline h3 {
