@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
@@ -11,7 +11,7 @@ const Login = () => {
   useEffect(() => {
     Telegram.BackButton.show().onClick(goBack)
     setNavigationPath('/main/dashboard')
-    Telegram.MainButton.show().enable().setText('Login').onClick(handleSubmit)
+    Telegram.MainButton.show().enable().setText('Login').onClick(( ) => handleSubmit('/main/dashboard'))
   }, [])
 
   const [formData, setFormData] = useState({
@@ -28,16 +28,15 @@ const Login = () => {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSubmit = (path: string) => {
     console.log(formData, navigateTo)
-    navigate(navigateTo)
+    navigate(path)
   }
 
   return (
     <div className="Login">
       <h2 className="title">Login</h2>
-      <form className="login-form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="login-form" onSubmit={() => handleSubmit('main/dashboard')}>
         <div className="input-group">
           <label htmlFor="email">Email</label>
           <input
