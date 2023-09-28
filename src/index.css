@@ -53,3 +53,7 @@ a {
   /* color: var(--accent-normal); */
   color: var(--tg-theme-link-color);
 }
+
+input, label, select {
+  color: var(--tg-theme-text-color);
+}
