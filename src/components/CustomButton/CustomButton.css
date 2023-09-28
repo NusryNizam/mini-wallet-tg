@@ -1,5 +1,5 @@
 .CustomButton {
-    background-color: var(--accent-normal);
+    background-color: var(--tg-theme-button-color);
     padding: 1rem;
     color: var(--tg-theme-button-text-color);
     font-weight: bold;
@@ -20,13 +20,5 @@
 .SecondaryButton {
     background-color: var(--tg-theme-button-text-color);
     border: 1px solid var(--tg-theme-bg-color);
-    color: var(--accent-normal);
+    color: var(--tg-theme-button-color);
 }
-
-/* .SecondaryButton:hover {
-    background-color: var(--accent-light-hover);
-}
-
-.SecondaryButton:active {
-    background-color: var(--accent-light-active);
-} */

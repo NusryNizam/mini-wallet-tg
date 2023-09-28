@@ -10,13 +10,12 @@
   height: 100dvh;
   overflow: auto;
   scrollbar-width: none;
+  background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .main {
-  background-color: var(--accent-light);
   display: grid;
   place-items: center;
-  /* background-color: var(--tg-color-scheme); */
 }
 
 label,

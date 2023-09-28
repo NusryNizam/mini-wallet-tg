@@ -18,11 +18,3 @@
     margin-bottom: 12px;
     cursor: pointer;
 }
-
-.pressables > button:hover {
-    background-color: var(--accent-light-hover);
-}
-
-.pressables > button:active {
-    background-color: var(--accent-light-active);
-}

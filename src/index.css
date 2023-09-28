@@ -3,9 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* color-scheme: light dark; */
-  /* color: rgba(255, 255, 255, 0.87); */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,22 +22,20 @@
   --primary-normal: #292929;
   --grey: #737373; */
 
-  --accent-light: var(--tg-theme-hint-color);
-  /* --accent-light-hover: #dce9fa;
-  --accent-light-active: #b6d2f5; */
-  --accent-normal: var(--tg-theme-button-color);
-  /* --accent-dark: #1052a8; */
-  /* --accent-darker: #07264e; */
-  --white: var(--tg-theme-secondary-bg-color);
-  /* --primary-light: #eaeaea; */
-  /* --primary-light-hover: #f8f8f8; */
-  /* --primary-light-active: #e6e6e6; */
-  --primary-normal: var(--tg-theme-text-color);
-  /* --grey: #737373; */
-  color: var(--tg-theme-text-color);
+  /* color: var(--tg-theme-text-color);
+  background-color: var(--tg-theme-secondary-bg-color); */
 
-  /* background-color: var(--accent-light); */
-  background-color: var(--tg-theme-secondary-bg-color);
+  /* Delete Below Area - Experimenting */
+
+  /* --tg-theme-bg-color: #ffffff;
+  --tg-theme-text-color: #000000;
+  --tg-theme-hint-color: #878787;
+  --tg-theme-link-color: #1577e1;
+  --tg-theme-button-color: #5ac8fb;
+  --tg-theme-button-text-color: #e7fdfe;
+  --tg-theme-secondary-bg-color: #f3f2f8; */
+
+  /* Delete Above Area - Experimenting */
 }
 
 * {
@@ -50,14 +45,16 @@
 }
 
 a {
-  /* color: var(--accent-normal); */
   color: var(--tg-theme-link-color);
 }
 
-input, label, select {
+input,
+label,
+select {
   color: var(--tg-theme-text-color);
 }
 
-input, select {
+input,
+select {
   background-color: var(--tg-theme-bg-color);
 }

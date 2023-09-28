@@ -13,7 +13,7 @@
     width: 100%;
     max-width: 360px;
     z-index: 2;
-    background-color: var(--white);
+    background-color: var(--tg-theme-secondary-bg-color);
     padding: 1.5rem;
     border-radius: 8px 8px 0px 0px;
     overflow: auto;
