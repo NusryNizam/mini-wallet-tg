@@ -29,7 +29,11 @@
 }
 
 .nav-item a.active {
-  color: var(--accent-dark);
+  color: var(--tg-theme-button-text-color);
+}
+
+a svg {
+  fill: var(--tg-theme-button-text-color);
 }
 
 a.active svg {
