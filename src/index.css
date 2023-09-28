@@ -57,3 +57,7 @@ a {
 input, label, select {
   color: var(--tg-theme-text-color);
 }
+
+input, select {
+  background-color: var(--tg-theme-bg-color);
+}
