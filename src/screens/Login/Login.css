@@ -26,7 +26,7 @@
 .input-group input, .input-group select {
   /* width: 100%; */
   padding: 16px;
-  /* border: 1px solid var(--primary-light); */
+  border: 1px solid var(--tg-theme-hint-color);
   border-radius: 8px;
   /* background-color: var(--white); */
   width: 100%;

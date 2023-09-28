@@ -3,7 +3,7 @@
     padding: 1rem;
     color: var(--tg-theme-button-text-color);
     font-weight: bold;
-    /* border: 1px solid var(--accent-normal); */
+    border: 1px solid var(--tg-theme-button-color);
     border-radius: 8px;
     width: 100%;
     cursor: pointer;
@@ -19,7 +19,7 @@
 
 .SecondaryButton {
     background-color: var(--tg-theme-button-text-color);
-    /* border: 1px solid var(--accent-light); */
+    border: 1px solid var(--tg-theme-button-color);
     color: var(--accent-normal);
 }
 

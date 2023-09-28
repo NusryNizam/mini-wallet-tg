@@ -3,10 +3,10 @@
   /* position: relative; */
 }
 .list {
-    background-color: var(--white);
-    border-radius: 8px;
-    padding: 0.1rem 1rem;
-    border: 1px solid var(--primary-light)
+  background-color: var(--tg-theme-bg-color);
+  border-radius: 8px;
+  padding: 0.1rem 1rem;
+  border: 1px solid var(--primary-light);
 }
 
 .button-container {
