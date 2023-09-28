@@ -7,7 +7,7 @@
     margin-top: 2rem;
 }
 .pressables > button {
-    color: var(--accent-dark);
+    color: var(--tg-theme-link-color);
     display: block;
     background-color: transparent;
     border: none;

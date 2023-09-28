@@ -1,5 +1,5 @@
 .card {
-    background-color: var(--white);
+    background-color: var(--tg-theme-bg-color);
     border-radius: 8px;
     box-shadow: 0px 2px 2px rgb(0 0 0 / 15%);
     width: 100%;

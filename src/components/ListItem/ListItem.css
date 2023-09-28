@@ -1,5 +1,5 @@
 .ListItem {
-    background-color: var(--white);
+    background-color: var(--tg-theme-bg-color);
     padding-block: 12px;
     display: flex;
     flex-direction: row;
