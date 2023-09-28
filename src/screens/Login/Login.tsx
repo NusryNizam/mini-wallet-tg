@@ -6,11 +6,11 @@ import { TelegramContext } from '../../context/TelegramContext'
 
 const Login = () => {
   const navigate = useNavigate()
-  let { Telegram, navigateTo } = useContext(TelegramContext)
+  let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
 
   useEffect(() => {
     Telegram.BackButton.show().onClick(goBack)
-    navigateTo = '/main'
+    setNavigationPath('/main')
     Telegram.MainButton.show().enable().setText('Login').onClick(handleSubmit)
   }, [])
 
@@ -30,7 +30,7 @@ const Login = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(formData)
+    console.log(formData, navigateTo)
     navigate(navigateTo)
   }
 
@@ -67,7 +67,7 @@ const Login = () => {
       <small className="small-text">
         Don't have an account?
         <br />
-        <Link to="../signup">Create one</Link>
+        <Link to="/signup">Create one</Link>
       </small>
     </div>
   )

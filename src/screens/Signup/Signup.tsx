@@ -67,7 +67,7 @@ const Signup = () => {
       <small className='small-text'>
         Already have an account?
         <br />
-        <Link to="../login">Login</Link>
+        <Link to="/login">Login</Link>
       </small>
     </div>
   )

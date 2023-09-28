@@ -7,11 +7,13 @@ type AppProp = {
 }
 
 function App({ children }: AppProp) {
-  
   const Telegram = (window as any).Telegram.WebApp
   const value = {
     Telegram: Telegram,
-    navigateTo: '/login'
+    navigateTo: '/login',
+    setNavigationPath: (path: string) => {
+      value.navigateTo = path
+    },
   }
 
   useEffect(() => {

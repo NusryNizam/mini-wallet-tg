@@ -7,9 +7,10 @@ import { useContext, useEffect } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
 
 const Onboarding = () => {
-  let { Telegram, navigateTo } = useContext(TelegramContext)
+  let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
 
   useEffect(() => {
+    setNavigationPath('/login')
     Telegram.BackButton.hide()
     Telegram.MainButton.show()
       .enable()
