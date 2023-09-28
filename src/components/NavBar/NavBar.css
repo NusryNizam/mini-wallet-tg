@@ -33,7 +33,7 @@
 }
 
 a.active svg {
-  fill: var(--accent-dark);
+  fill: var(--tg-theme-text-color);
 }
 
 .link-text {

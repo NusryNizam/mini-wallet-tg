@@ -28,6 +28,7 @@
 
 .date {
     font-size: 0.8rem;
+    color: var(--tg-theme-hint-color);
     /* color: var(--grey); */
 }
 
