@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
-import { Link, useLocation, useNavigate, useNavigation, useParams } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const NotFound = () => {
-const location = useLocation()
+  const location = useLocation()
 
   return (
     <div>
@@ -10,7 +9,9 @@ const location = useLocation()
       <Link to="/">Go to homepage</Link>
       <br />
       <br />
-      <small className='small-text'>Current Location: <strong>{location.pathname}</strong></small>
+      <small className="small-text">
+        Current Location: <strong>{location.pathname}</strong>
+      </small>
     </div>
   )
 }
