@@ -27,13 +27,13 @@
 
   /* Delete Below Area - Experimenting */
 
-  /* --tg-theme-bg-color: #ffffff;
+  --tg-theme-bg-color: #ffffff;
   --tg-theme-text-color: #000000;
   --tg-theme-hint-color: #878787;
   --tg-theme-link-color: #1577e1;
   --tg-theme-button-color: #5ac8fb;
   --tg-theme-button-text-color: #e7fdfe;
-  --tg-theme-secondary-bg-color: #f3f2f8; */
+  --tg-theme-secondary-bg-color: #f3f2f8;
 
   /* Delete Above Area - Experimenting */
 }
@@ -54,9 +54,11 @@ h3,
 h4,
 h5,
 h6,
+p,
 input,
 label,
-select {
+select,
+small {
   color: var(--tg-theme-text-color);
 }
 
