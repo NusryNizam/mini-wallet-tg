@@ -9,13 +9,17 @@ type AppProp = {
 function App({ children }: AppProp) {
   
   const Telegram = (window as any).Telegram.WebApp
+  const value = {
+    Telegram: Telegram,
+    navigateTo: '/login'
+  }
 
   useEffect(() => {
     console.log((window as any).Telegram.WebApp)
   }, [])
 
   return (
-    <TelegramContext.Provider value={Telegram}>
+    <TelegramContext.Provider value={value}>
       <div className="App">{children}</div>
     </TelegramContext.Provider>
   )

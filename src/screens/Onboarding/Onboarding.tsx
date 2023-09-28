@@ -7,7 +7,7 @@ import { useContext, useEffect } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
 
 const Onboarding = () => {
-  const Telegram = useContext(TelegramContext)
+  let { Telegram, navigateTo } = useContext(TelegramContext)
 
   useEffect(() => {
     Telegram.BackButton.hide()
@@ -19,7 +19,7 @@ const Onboarding = () => {
 
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate('./login',)
+    navigate(navigateTo)
   }
 
   return (
