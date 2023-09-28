@@ -12,7 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --accent-light: #e8f0fc;
+  /* --accent-light: #e8f0fc;
   --accent-light-hover: #dce9fa;
   --accent-light-active: #b6d2f5;
   --accent-normal: #156de0;
@@ -23,9 +23,24 @@
   --primary-light-hover: #f8f8f8;
   --primary-light-active: #e6e6e6;
   --primary-normal: #292929;
+  --grey: #737373; */
+
+  --accent-light: var(--tg-theme-hint-color);
+  --accent-light-hover: #dce9fa;
+  --accent-light-active: #b6d2f5;
+  --accent-normal: #156de0;
+  --accent-dark: #1052a8;
+  --accent-darker: #07264e;
+  --white: var(--tg-theme-secondary-bg-color);
+  --primary-light: #eaeaea;
+  --primary-light-hover: #f8f8f8;
+  --primary-light-active: #e6e6e6;
+  --primary-normal: #292929;
   --grey: #737373;
+  color: var(--tg-theme-text-color);
 
   background-color: var(--accent-light);
+  background-color: var(--tg-theme-secondary-bg-color);
 }
 
 * {
@@ -35,5 +50,6 @@
 }
 
 a {
-  color: var(--accent-normal);
+  /* color: var(--accent-normal); */
+  color: var(--tg-theme-link-color);
 }
