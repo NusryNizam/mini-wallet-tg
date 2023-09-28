@@ -1,7 +1,7 @@
 .FloatingActionButton {
     background-color: var(--accent-normal);
     padding: 0.6rem 1rem;
-    color: var(--white);
+    /* color: var(--white); */
     font-weight: bold;
     border: 1px solid var(--accent-normal);
     border-radius: 30px;
