@@ -19,7 +19,7 @@
 
 .SecondaryButton {
     background-color: var(--tg-theme-button-text-color);
-    border: 1px solid var(--tg-theme-button-color);
+    border: 1px solid var(--tg-theme-bg-color);
     color: var(--accent-normal);
 }
 

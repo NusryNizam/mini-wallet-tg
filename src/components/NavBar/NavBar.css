@@ -29,15 +29,15 @@
 }
 
 .nav-item a.active {
-  color: var(--tg-theme-button-text-color);
+  color: var(--tg-theme-button-color);
 }
 
 a svg {
-  fill: var(--tg-theme-button-text-color);
+  fill: var(--tg-theme-text-color);
 }
 
 a.active svg {
-  fill: var(--tg-theme-text-color);
+  fill: var(--tg-theme-button-color);
 }
 
 .link-text {
