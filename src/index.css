@@ -28,7 +28,7 @@
   --accent-light: var(--tg-theme-hint-color);
   --accent-light-hover: #dce9fa;
   --accent-light-active: #b6d2f5;
-  --accent-normal: #156de0;
+  --accent-normal: var(--tg-theme-hint-color);
   --accent-dark: #1052a8;
   --accent-darker: #07264e;
   --white: var(--tg-theme-secondary-bg-color);
