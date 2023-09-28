@@ -6,7 +6,7 @@ import { useContext, useEffect } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
 
 const Finances = () => {
-  let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+  let { Telegram, setNavigationPath } = useContext(TelegramContext)
 
   useEffect(() => {
     setNavigationPath('add')
