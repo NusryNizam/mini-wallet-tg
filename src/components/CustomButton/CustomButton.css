@@ -1,32 +1,32 @@
 .CustomButton {
     background-color: var(--accent-normal);
     padding: 1rem;
-    color: var(--white);
+    color: var(--tg-theme-button-text-color);
     font-weight: bold;
-    border: 1px solid var(--accent-normal);
+    /* border: 1px solid var(--accent-normal); */
     border-radius: 8px;
     width: 100%;
     cursor: pointer;
 }
 
-.CustomButton:hover {
+/* .CustomButton:hover {
     background-color: var(--accent-dark);
 }
 
 .CustomButton:active {
     background-color: var(--accent-darker);
-}
+} */
 
 .SecondaryButton {
-    background-color: var(--accent-light);
-    border: 1px solid var(--accent-light);
+    background-color: var(--tg-theme-button-text-color);
+    /* border: 1px solid var(--accent-light); */
     color: var(--accent-normal);
 }
 
-.SecondaryButton:hover {
+/* .SecondaryButton:hover {
     background-color: var(--accent-light-hover);
 }
 
 .SecondaryButton:active {
     background-color: var(--accent-light-active);
-}
+} */

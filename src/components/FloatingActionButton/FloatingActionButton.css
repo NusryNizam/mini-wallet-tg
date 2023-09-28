@@ -1,9 +1,10 @@
 .FloatingActionButton {
-    background-color: var(--accent-normal);
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
     padding: 0.6rem 1rem;
     /* color: var(--white); */
     font-weight: bold;
-    border: 1px solid var(--accent-normal);
+    /* border: 1px solid var(--accent-normal); */
     border-radius: 30px;
     width: fit-content;
     cursor: pointer;
@@ -11,7 +12,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.4rem;
-    box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);
+    /* box-shadow: 2px 2px 4px rgb(0 0 0 / 25%); */
 }
 
 .FloatingActionButton:hover {
