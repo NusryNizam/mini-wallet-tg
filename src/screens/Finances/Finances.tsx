@@ -14,12 +14,12 @@ const Finances = () => {
     Telegram.MainButton.show()
       .enable()
       .setText('Add')
-      .onClick(handleClick)
+      .onClick(() => handleClick('/finances/add'))
   }, [navigateTo])
 
   const navigate = useNavigate()
-  const handleClick = () => {
-    navigate(navigateTo)
+  const handleClick = (path: string) => {
+    navigate(path)
   }
 
   const openBottomSheet = () => {

@@ -15,14 +15,13 @@ const Onboarding = () => {
     Telegram.MainButton.show()
       .enable()
       .setText('Get Started')
-      .onClick(handleClick)
+      .onClick(() => handleClick('/login'))
   }, [navigateTo])
 
   const navigate = useNavigate()
-  const handleClick = () => {
-    navigate(navigateTo)
+  const handleClick = (path: string) => {
+    navigate(path)
   }
-
   return (
     <div className="Onboarding">
       <div className="logo-container">
@@ -36,7 +35,7 @@ const Onboarding = () => {
           Manage and visualize your day-to-day finances inside Telegram without
           the hassle
         </h3>
-        <CustomButton onClick={handleClick}>Get Started</CustomButton>
+        <CustomButton onClick={() => handleClick('/login')}>Get Started</CustomButton>
       </section>
     </div>
   )
