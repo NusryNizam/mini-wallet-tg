@@ -11,16 +11,13 @@ const Finances = () => {
   useEffect(() => {
     setNavigationPath('add')
     Telegram.BackButton.hide()
-    Telegram.MainButton.show()
-      .enable()
-      .setText('Add')
-      .onClick(() => handleClick('add'))
+    Telegram.MainButton.hide()
   }, [navigateTo])
 
   const navigate = useNavigate()
-  const handleClick = (path: string) => {
-    navigate(path)
-  }
+  // const handleClick = (path: string) => {
+  //   navigate(path)
+  // }
 
   const openBottomSheet = () => {
     navigate('add')
