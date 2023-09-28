@@ -3,13 +3,18 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import image from '../../assets/images/image.png'
 import logo from '../../assets/images/mini-wallet-logo.png'
 import './Onboarding.css'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
+import { TelegramContext } from '../../context/TelegramContext'
 
 const Onboarding = () => {
-  const Telegram = (window as any).Telegram.WebApp
+  const Telegram = useContext(TelegramContext)
 
   useEffect(() => {
-    Telegram.MainButton.show().enable().setText('Get Started').onClick(handleClick)
+    Telegram.BackButton.hide()
+    Telegram.MainButton.show()
+      .enable()
+      .setText('Get Started')
+      .onClick(handleClick)
   }, [])
 
   const navigate = useNavigate()
