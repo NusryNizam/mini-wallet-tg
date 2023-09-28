@@ -9,7 +9,6 @@ const Onboarding = () => {
   const Telegram = (window as any).Telegram.WebApp
 
   useEffect(() => {
-    Telegram.BackButton.show()
     Telegram.MainButton.show().enable().setText('Get Started').onClick(handleClick)
   }, [])
 
