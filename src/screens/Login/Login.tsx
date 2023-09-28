@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    Telegram.BackButton.show().onClick(navigate('../'))
+    Telegram.BackButton.show().onClick(goBack)
     Telegram.MainButton.show().enable().setText('Login').onClick(handleSubmit)
   }, [])
 
@@ -16,6 +16,10 @@ const Login = () => {
     email: '',
     password: '',
   })
+
+  function goBack() {
+    navigate('../')
+  }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
