@@ -20,7 +20,7 @@ const Finances = () => {
   // }
 
   const openBottomSheet = () => {
-    navigate('add')
+    // navigate('add')
     Telegram.setItem('laptop', 300000)
     Telegram.PopupParams.title = 'Are you sure?'
     Telegram.PopupParams.description = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
