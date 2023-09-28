@@ -7,6 +7,7 @@ import Login from './screens/Login/Login.tsx'
 import Signup from './screens/Signup/Signup.tsx'
 import Main from './screens/Main/Main.tsx'
 import './index.css'
+import NotFound from './components/NotFound/NotFound.tsx'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     path: '/main/*',
     element: <Main />,
   },
+  {
+    path: '*',
+    element: <NotFound/>
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

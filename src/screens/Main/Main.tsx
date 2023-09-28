@@ -7,6 +7,7 @@ import './Main.css'
 import BottomSheet from '../../components/BottomSheet/BottomSheet'
 import AddFinancesForm from '../AddFinancesForm/AddFinancesForm'
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm'
+import NotFound from '../../components/NotFound/NotFound'
 
 const Main = () => {
   const navigator = useNavigate()
@@ -39,6 +40,7 @@ const Main = () => {
             }
           />
         </Route>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
       <div className="nav-container">
         <NavBar />
