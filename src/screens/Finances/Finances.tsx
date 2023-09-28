@@ -2,9 +2,26 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import FloatingActionButton from '../../components/FloatingActionButton/FloatingActionButton'
 import ListItem from '../../components/ListItem/ListItem'
 import './Finances.css'
+import { useContext, useEffect } from 'react'
+import { TelegramContext } from '../../context/TelegramContext'
 
 const Finances = () => {
+  let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+
+  useEffect(() => {
+    setNavigationPath('/login')
+    Telegram.BackButton.hide()
+    Telegram.MainButton.show()
+      .enable()
+      .setText('Get Started')
+      .onClick(handleClick)
+  }, [navigateTo])
+
   const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(navigateTo)
+  }
+
   const openBottomSheet = () => {
     navigate('add')
   }
@@ -43,7 +60,7 @@ const Finances = () => {
           </svg>
         </FloatingActionButton>
       </div>
-      <Outlet/>
+      <Outlet />
     </div>
   )
 }

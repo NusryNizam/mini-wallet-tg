@@ -1,11 +1,21 @@
+import { useContext, useEffect } from 'react'
 import Card from '../../components/Card/Card'
 import './Dashboard.css'
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
+import { TelegramContext } from '../../context/TelegramContext'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 const Dashboard = () => {
+  let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+
+  useEffect(() => {
+    setNavigationPath('/main/finances/add')
+    Telegram.BackButton.hide()
+    Telegram.MainButton.hide()
+  }, [navigateTo])
+
   return (
     <div className="Dashboard">
       <h2 className="title">Dashboard</h2>
