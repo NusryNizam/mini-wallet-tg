@@ -10,7 +10,7 @@ const Onboarding = () => {
 
   useEffect(() => {
     Telegram.BackButton.show()
-    Telegram.MainButton.enable().setText('Get Started').onClick(handleClick)
+    Telegram.MainButton.show().enable().setText('Get Started').onClick(handleClick)
   }, [])
 
   const navigate = useNavigate()
