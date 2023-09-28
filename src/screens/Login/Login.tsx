@@ -1,10 +1,17 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
+  const Telegram = (window as any).Telegram.WebApp
   const navigate = useNavigate()
+
+  useEffect(() => {
+    Telegram.BackButton.show().onClick(navigate('../'))
+    Telegram.MainButton.show().enable().setText('Login').onClick(handleSubmit)
+  }, [])
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
