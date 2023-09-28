@@ -1,3 +1,7 @@
+.Profile {
+    color: var(--tg-theme-text-color);
+}
+
 .email {
     font-size: 20px;
     font-weight: bold;
