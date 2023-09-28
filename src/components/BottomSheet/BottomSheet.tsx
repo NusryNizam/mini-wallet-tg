@@ -1,5 +1,8 @@
+import { useContext, useEffect } from 'react'
 import CustomButton from '../CustomButton/CustomButton'
 import './BottomSheet.css'
+import { TelegramContext } from '../../context/TelegramContext'
+import { useNavigate } from 'react-router-dom'
 
 type BottomSheetPropTypes = {
   children: React.ReactNode
@@ -8,6 +11,26 @@ type BottomSheetPropTypes = {
 
 const BottomSheet = (props: BottomSheetPropTypes) => {
   const { children, onCloseModal } = props
+  const navigate = useNavigate()
+
+   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+
+  useEffect(() => {
+    setNavigationPath('')
+    Telegram.BackButton.show().onClick(goBack)
+    Telegram.MainButton.show()
+      .enable()
+      .setText('Save')
+      .onClick(() => () => {})
+  }, [navigateTo])
+
+  function goBack() {
+    navigate(-1)
+  }
+
+
+
+
   return (
     <div className="BottomSheet">
       <div className="overlay"></div>

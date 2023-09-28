@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import FloatingActionButton from '../../components/FloatingActionButton/FloatingActionButton'
 import ListItem from '../../components/ListItem/ListItem'
 import './Finances.css'
@@ -14,13 +14,14 @@ const Finances = () => {
     Telegram.MainButton.hide()
   }, [navigateTo])
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   // const handleClick = (path: string) => {
   //   navigate(path)
   // }
 
   const openBottomSheet = () => {
     // navigate('add')
+    navigate('add-finance')
 
 
     Telegram.showAlert('alert!')

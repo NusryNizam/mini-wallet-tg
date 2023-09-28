@@ -1,28 +1,27 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import './AddFinancesForm.css'
 import CustomButton from '../../components/CustomButton/CustomButton'
-import { TelegramContext } from '../../context/TelegramContext'
-import { useNavigate } from 'react-router-dom'
+// import { TelegramContext } from '../../context/TelegramContext'
+// import { useNavigate } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 
 const AddFinancesForm = () => {
 
-  let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+  // let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
 
-  useEffect(() => {
-    setNavigationPath('')
-    Telegram.BackButton.show().onClick(goBack)
-    Telegram.MainButton.show()
-      .enable()
-      .setText('Save')
-      .onClick(() => handleSubmit())
-  }, [navigateTo])
+  // useEffect(() => {
+  //   setNavigationPath('')
+  //   Telegram.BackButton.show().onClick(goBack)
+  //   Telegram.MainButton.show()
+  //     .enable()
+  //     .setText('Save')
+  //     .onClick(() => handleSubmit())
+  // }, [navigateTo])
 
-  function goBack() {
-    navigate(-1)
-  }
+  // function goBack() {
+  //   navigate(-1)
+  // }
 
-  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     financeType: '',
@@ -38,13 +37,13 @@ const AddFinancesForm = () => {
 
   const handleSubmit = () => {
     console.log(formData)
-    Telegram.setItem('laptop', 300000)
-    Telegram.PopupParams.title = 'Are you sure?'
-    Telegram.PopupParams.description = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-    const okBtn = {text: 'Bleh', type: 'ok'}
-    Telegram.PopupParams.buttons = [okBtn]
+    // Telegram.setItem('laptop', 300000)
+    // Telegram.PopupParams.title = 'Are you sure?'
+    // Telegram.PopupParams.description = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
+    // const okBtn = {text: 'Bleh', type: 'ok'}
+    // Telegram.PopupParams.buttons = [okBtn]
 
-    Telegram.showPopup()
+    // Telegram.showPopup()
     // navigate('../')
     
   }

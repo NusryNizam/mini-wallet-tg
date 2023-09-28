@@ -10,7 +10,7 @@ import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm'
 import NotFound from '../../components/NotFound/NotFound'
 
 const Main = () => {
-  const navigator = useNavigate()
+  const navigate = useNavigate()
   return (
     <div className="Main">
       <Routes>
@@ -18,14 +18,11 @@ const Main = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/finances" element={<Finances />}>
           <Route
-            path="add"
+            path="add-finance"
             element={
-              <BottomSheet
-                onCloseModal={() => {
-                  navigator('finances')
-                }}
-                children={<AddFinancesForm />}
-              />
+              <BottomSheet onCloseModal={() => navigate(-1)}>
+                <AddFinancesForm />
+              </BottomSheet>
             }
           />
         </Route>
@@ -34,13 +31,13 @@ const Main = () => {
             path="change-password"
             element={
               <BottomSheet
-                onCloseModal={() => navigator('profile')}
+                onCloseModal={() => navigate('profile')}
                 children={<ChangePasswordForm />}
               />
             }
           />
         </Route>
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <div className="nav-container">
         <NavBar />
