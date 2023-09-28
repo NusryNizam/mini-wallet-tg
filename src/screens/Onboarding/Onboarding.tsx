@@ -10,6 +10,7 @@ const Onboarding = () => {
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
 
   useEffect(() => {
+    Telegram.enableClosingConfirmation()
     setNavigationPath('/login')
     Telegram.BackButton.hide()
     Telegram.MainButton.show()

@@ -1,9 +1,29 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import './AddFinancesForm.css'
 import CustomButton from '../../components/CustomButton/CustomButton'
+import { TelegramContext } from '../../context/TelegramContext'
+import { useNavigate } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 
 const AddFinancesForm = () => {
+
+  let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+
+  useEffect(() => {
+    setNavigationPath('')
+    Telegram.BackButton.show().onClick(goBack)
+    Telegram.MainButton.show()
+      .enable()
+      .setText('Save')
+      .onClick(() => handleSubmit())
+  }, [navigateTo])
+
+  function goBack() {
+    navigate(-1)
+  }
+
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     financeType: '',
     category: '',
@@ -16,14 +36,22 @@ const AddFinancesForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSubmit = () => {
     console.log(formData)
+    Telegram.setItem('laptop', 300000)
+    Telegram.PopupParams.title = 'Are you sure?'
+    Telegram.PopupParams.description = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
+    const okBtn = {text: 'Bleh', type: 'ok'}
+    Telegram.PopupParams.buttons = [okBtn]
+
+    Telegram.showPopup()
+    // navigate('../')
+    
   }
   return (
     <div className="AddFinancesForm">
       <h2 className="title">Add Finances</h2>
-      <form className="add-finances-form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="add-finances-form" onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="financeType">Finance Type</label>
           <input
