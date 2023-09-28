@@ -19,7 +19,7 @@ const Onboarding = () => {
 
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate('login')
+    navigate('./login',)
   }
 
   return (

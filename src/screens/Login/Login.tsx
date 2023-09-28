@@ -19,7 +19,7 @@ const Login = () => {
   })
 
   function goBack() {
-    navigate('../')
+    navigate(-1)
   }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
