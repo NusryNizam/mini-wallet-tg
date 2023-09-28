@@ -9,12 +9,12 @@ const Finances = () => {
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
 
   useEffect(() => {
-    setNavigationPath('/finances/add')
+    setNavigationPath('main/finances/add')
     Telegram.BackButton.hide()
     Telegram.MainButton.show()
       .enable()
       .setText('Add')
-      .onClick(() => handleClick('/finances/add'))
+      .onClick(() => handleClick('main/finances/add'))
   }, [navigateTo])
 
   const navigate = useNavigate()
