@@ -16,7 +16,7 @@ const Onboarding = () => {
       .enable()
       .setText('Get Started')
       .onClick(handleClick)
-  }, [])
+  }, [navigateTo])
 
   const navigate = useNavigate()
   const handleClick = () => {
