@@ -22,6 +22,9 @@ const BottomSheet = (props: BottomSheetPropTypes) => {
       .enable()
       .setText('Save')
       .onClick(() => () => {})
+
+    console.log('inside bottomsheet');
+
   }, [navigateTo])
 
   function goBack() {

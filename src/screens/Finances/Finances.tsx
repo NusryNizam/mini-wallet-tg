@@ -12,7 +12,9 @@ const Finances = () => {
     setNavigationPath('add')
     Telegram.BackButton.hide()
     Telegram.MainButton.hide()
-  }, [navigateTo])
+    console.log('inside finances');
+    
+  }, [])
 
   const navigate = useNavigate()
   // const handleClick = (path: string) => {
@@ -24,8 +26,8 @@ const Finances = () => {
     navigate('add-finance')
 
 
-    Telegram.showAlert('alert!')
-    Telegram.BackButton.show()
+    // Telegram.showAlert('alert!')
+    // Telegram.BackButton.show()
   }
 
   return (
