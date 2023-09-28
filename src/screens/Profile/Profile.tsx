@@ -9,10 +9,7 @@ const Profile = () => {
   useEffect(() => {
     setNavigationPath('/')
     Telegram.BackButton.show().onClick(goBack)
-    Telegram.MainButton.show()
-      .enable()
-      .setText('Get Started')
-      .onClick(handleClick)
+    Telegram.MainButton.hide()
   }, [navigateTo])
 
   const goBack = () => {
@@ -20,9 +17,6 @@ const Profile = () => {
   }
 
   const navigate = useNavigate()
-  const handleClick = () => {
-    navigate(navigateTo)
-  }
 
   const logout = () => {
     navigate('/login')
