@@ -10,7 +10,7 @@ const Login = () => {
 
   useEffect(() => {
     Telegram.BackButton.show().onClick(goBack)
-    setNavigationPath('/main')
+    setNavigationPath('/main/dashboard')
     Telegram.MainButton.show().enable().setText('Login').onClick(handleSubmit)
   }, [])
 
