@@ -21,12 +21,12 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: var(--accent-darker);
+  color: var(--tg-theme-text-color);
 }
-
+/* 
 .nav-item a:hover {
   background-color: var(--primary-light-hover);
-}
+} */
 
 .nav-item a.active {
   color: var(--tg-theme-button-color);
