@@ -41,6 +41,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
       })
       .catch((err) => {
         toast.error(`Error: ${err.message}`)
+        toast.error(`String: ${apiUrl}`)
         console.log(err)
       })
   }
