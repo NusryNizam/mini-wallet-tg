@@ -1,17 +1,25 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, Context, useContext, useEffect, useState } from 'react'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { TelegramContext } from '../../context/TelegramContext'
+import { ToastContainer } from 'react-toastify'
+import { AuthContext, AuthContextType } from '../../context/AuthContext'
 
 const Login = () => {
   const navigate = useNavigate()
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+  const { login } = useContext<AuthContextType>(
+    AuthContext as Context<AuthContextType>
+  )
 
   useEffect(() => {
     Telegram.BackButton.show().onClick(goBack)
     setNavigationPath('/main/dashboard')
-    Telegram.MainButton.show().enable().setText('Login').onClick(( ) => handleSubmit('/main/dashboard'))
+    Telegram.MainButton.show()
+      .enable()
+      .setText('Login')
+      .onClick(() => handleSubmit('/main/dashboard'))
   }, [])
 
   const [formData, setFormData] = useState({
@@ -30,13 +38,22 @@ const Login = () => {
 
   const handleSubmit = (path: string) => {
     console.log(formData, navigateTo)
-    navigate(path)
+    // navigate(path)
+    console.log(path)
+
+    login(formData)
   }
 
   return (
     <div className="Login">
       <h2 className="title">Login</h2>
-      <form className="login-form" onSubmit={() => handleSubmit('main/dashboard')}>
+      <form
+        className="login-form"
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleSubmit('/main/dashboard')
+        }}
+      >
         <div className="input-group">
           <label htmlFor="email">Email</label>
           <input
@@ -68,6 +85,7 @@ const Login = () => {
         <br />
         <Link to="/signup">Create one</Link>
       </small>
+      <ToastContainer position="top-right" />
     </div>
   )
 }

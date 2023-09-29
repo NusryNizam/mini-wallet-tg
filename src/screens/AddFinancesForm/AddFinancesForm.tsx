@@ -6,7 +6,6 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 // import { Link } from 'react-router-dom'
 
 const AddFinancesForm = () => {
-
   // let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
 
   // useEffect(() => {
@@ -21,7 +20,6 @@ const AddFinancesForm = () => {
   // function goBack() {
   //   navigate(-1)
   // }
-
 
   const [formData, setFormData] = useState({
     financeType: '',
@@ -45,7 +43,6 @@ const AddFinancesForm = () => {
 
     // Telegram.showPopup()
     // navigate('../')
-    
   }
   return (
     <div className="AddFinancesForm">
@@ -67,14 +64,6 @@ const AddFinancesForm = () => {
           <select name="category" id="category">
             <option value={formData.category}>Rent</option>
           </select>
-          {/* <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={(e) => handleInput(e)}
-            value={formData.password}
-          /> */}
         </div>
         <div className="input-group">
           <label htmlFor="amount">Amount</label>
@@ -102,7 +91,7 @@ const AddFinancesForm = () => {
         </div>
         <br />
         <CustomButton isSubmitType={true}>Add</CustomButton>
-      </form>      
+      </form>
     </div>
   )
 }

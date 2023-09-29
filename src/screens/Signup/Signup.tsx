@@ -3,15 +3,19 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import './Signup.css'
 import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Signup = () => {
   const navigate = useNavigate()
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
-
   useEffect(() => {
     Telegram.BackButton.show().onClick(goBack)
     setNavigationPath('/main/dashboard')
-    Telegram.MainButton.show().enable().setText('Signup').onClick(( ) => handleSubmit('/main/dashboard'))
+    Telegram.MainButton.show()
+      .enable()
+      .setText('Signup')
+      .onClick(() => handleSubmit('/main/dashboard'))
   }, [])
 
   function goBack() {
@@ -20,7 +24,39 @@ const Signup = () => {
 
   const handleSubmit = (path: string) => {
     console.log(formData, navigateTo)
-    navigate(path)
+    // navigate(path)
+    console.log(path)
+
+    axios
+      .post(
+        'http://localhost:3000/signup',
+        {
+          displayName: formData.name,
+          email: formData.email,
+          password: formData.password,
+        },
+        {
+          withCredentials: true,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+      .then(() => {
+        toast.success('Success!')
+        toast('Redirecting to login.. Please wait')
+        setTimeout(() => {
+          navigate('/login')
+        }, 4000)
+        console.log('Success!')
+        setFormData({
+          name: '',
+          email: '',
+          password: '',
+        })
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`)
+        console.log(err)
+      })
   }
   const [formData, setFormData] = useState({
     name: '',
@@ -33,12 +69,17 @@ const Signup = () => {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-
   return (
     <div className="Signup">
       <h2 className="title">Signup</h2>
-      <form className="signup-form" onSubmit={() => handleSubmit('/main/dashboard')}>
-      <div className="input-group">
+      <form
+        className="signup-form"
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleSubmit('/main/dashboard')
+        }}
+      >
+        <div className="input-group">
           <label htmlFor="name">Your Name</label>
           <input
             type="text"
@@ -75,11 +116,12 @@ const Signup = () => {
         <CustomButton isSubmitType={true}>Signup</CustomButton>
       </form>
       <br />
-      <small className='small-text'>
+      <small className="small-text">
         Already have an account?
         <br />
         <Link to="/login">Login</Link>
       </small>
+      <ToastContainer position="top-right" />
     </div>
   )
 }
