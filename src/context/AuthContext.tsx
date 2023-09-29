@@ -2,6 +2,7 @@ import axios from 'axios'
 import { createContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import apiUrl from '../utils/base'
 
 export type AuthContextType = {
   login: (data: { email: string; password: string }) => void
@@ -22,7 +23,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
   const login = (data: { email: string; password: string }) => {
     axios
       .post(
-        'http://localhost:3000/login',
+        `${apiUrl}/login`,
         {
           email: data.email,
           password: data.password,
@@ -46,7 +47,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
 
   const logout = () => {
     axios
-      .get('http://localhost:3000/logout', {
+      .get(`${apiUrl}/logout`, {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' },
       })

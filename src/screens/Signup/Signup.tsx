@@ -5,6 +5,7 @@ import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import apiUrl from '../../utils/base'
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -29,7 +30,7 @@ const Signup = () => {
 
     axios
       .post(
-        'http://localhost:3000/signup',
+        `${apiUrl}signup'`,
         {
           displayName: formData.name,
           email: formData.email,
