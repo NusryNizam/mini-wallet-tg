@@ -13,10 +13,12 @@ const Onboarding = () => {
     Telegram.enableClosingConfirmation()
     setNavigationPath('/login')
     Telegram.BackButton.hide()
-    Telegram.MainButton.show()
-      .enable()
-      .setText('Get Started')
-      .onClick(() => handleClick('/login'))
+    // Telegram.MainButton.show()
+    //   .enable()
+    //   .setText('Get Started')
+    //   .onClick(() => handleClick('/login'))
+    Telegram.MainButton.disable()
+
   }, [navigateTo])
 
   const navigate = useNavigate()
