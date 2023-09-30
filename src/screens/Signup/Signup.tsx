@@ -30,7 +30,7 @@ const Signup = () => {
 
     axios
       .post(
-        `${apiUrl}signup'`,
+        `${apiUrl}/signup'`,
         {
           displayName: formData.name,
           email: formData.email,
