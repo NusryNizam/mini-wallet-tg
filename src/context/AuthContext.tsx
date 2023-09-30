@@ -44,6 +44,8 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
         toast.error(`String: ${apiUrl}`)
         toast.error(import.meta.env.VITE_API_URL)
         toast.error(import.meta.env.MODE)
+        toast.error(import.meta.env.DEV)
+        toast.error(import.meta.env.PROD)
         console.log(err)
       })
   }
