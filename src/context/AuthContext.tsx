@@ -40,8 +40,8 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
         console.log('Success!')
       })
       .catch((err) => {
-        toast.error(`Error: ${err.message}`)
-        console.log(err)
+        toast.error(`Error: ${err.response.data.error}`)
+        console.log(err.response.data.error)
       })
   }
 
@@ -58,8 +58,8 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
         console.log('Successfully logged out')
       })
       .catch((err) => {
-        toast.error(`Error: ${err.message}`)
-        console.log(err)
+        toast.error(`Error: ${err.response.data.error}`)
+        console.log(err.response.data.error)
       })
   }
 

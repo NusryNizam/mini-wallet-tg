@@ -61,8 +61,8 @@ const Signup = () => {
         })
       })
       .catch((err) => {
-        toast.error(`Error: ${err.message}`)
-        console.log(err)
+        toast.error(`Error: ${err.response.data.error}`)
+        console.log(err.response.data.error)
       })
   }
   const [formData, setFormData] = useState({
