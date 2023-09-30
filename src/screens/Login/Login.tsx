@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import { AuthContext, AuthContextType } from '../../context/AuthContext'
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
   const { login } = useContext<AuthContextType>(
@@ -41,7 +42,12 @@ const Login = () => {
     // navigate(path)
     console.log(path)
 
+    setIsLoading(true)
     login(formData)
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 4000);
   }
 
   return (
@@ -77,7 +83,7 @@ const Login = () => {
           />
         </div>
         <br />
-        <CustomButton isSubmitType={true}>Login</CustomButton>
+        <CustomButton isLoading={isLoading} isSubmitType={true}>Login</CustomButton>
       </form>
       <br />
       <small className="small-text">

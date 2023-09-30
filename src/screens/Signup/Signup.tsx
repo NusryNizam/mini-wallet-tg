@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import apiUrl from '../../utils/base'
 
 const Signup = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
   useEffect(() => {
@@ -27,10 +28,11 @@ const Signup = () => {
     console.log(formData, navigateTo)
     // navigate(path)
     console.log(path)
+    setIsLoading(true)
 
     axios
       .post(
-        `${apiUrl}/signup'`,
+        `${apiUrl}/signup`,
         {
           displayName: formData.name,
           email: formData.email,
@@ -114,7 +116,7 @@ const Signup = () => {
           />
         </div>
         <br />
-        <CustomButton isSubmitType={true}>Signup</CustomButton>
+        <CustomButton isLoading={isLoading} isSubmitType={true}>Signup</CustomButton>
       </form>
       <br />
       <small className="small-text">

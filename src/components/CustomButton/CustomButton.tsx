@@ -5,13 +5,23 @@ type CustomButtonPropType = {
   children: React.ReactNode
   isSubmitType?: boolean
   variant?: 'primary' | 'secondary'
+  isLoading?: boolean
 }
 const CustomButton = (props: CustomButtonPropType) => {
-  const { children, onClick, isSubmitType = false, variant = 'primary' } = props
+  const {
+    isLoading = false,
+    children,
+    onClick,
+    isSubmitType = false,
+    variant = 'primary',
+  } = props
   return (
     <button
+      disabled={isLoading}
       type={isSubmitType ? 'submit' : 'button'}
-      className={variant === 'primary' ? "CustomButton" : 'CustomButton SecondaryButton'}
+      className={
+        variant === 'primary' ? 'CustomButton' : 'CustomButton SecondaryButton'
+      }
       onClick={onClick}
     >
       {children}

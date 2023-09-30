@@ -9,6 +9,9 @@
     cursor: pointer;
 }
 
+.CustomButton:disabled {
+    background-color: var(--tg-theme-hint-color);
+}
 /* .CustomButton:hover {
     background-color: var(--accent-dark);
 }
