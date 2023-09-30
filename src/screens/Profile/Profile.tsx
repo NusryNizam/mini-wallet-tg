@@ -6,7 +6,7 @@ import './Profile.css'
 
 const Profile = () => {
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
-  const { logout } = useContext<AuthContextType>(
+  const { logout, currentUser } = useContext<AuthContextType>(
     AuthContext as Context<AuthContextType>
   )
   useEffect(() => {
@@ -29,7 +29,7 @@ const Profile = () => {
       <h2 className="title">Profile</h2>
       <div className="input-group">
         <label>Your email</label>
-        <div className="email">jonhdoe@email.com</div>
+        <div className="email">{currentUser}</div>
       </div>
       <div className="pressables">
         {/* <button onClick={changePassword}>Change Password</button> */}

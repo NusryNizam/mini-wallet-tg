@@ -8,6 +8,7 @@ export type AuthContextType = {
   login: (data: { email: string; password: string }) => void
   logout: () => void
   isAuthenticated: boolean
+  currentUser: string
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null)
@@ -17,6 +18,7 @@ type AuthProviderPropTypes = {
 }
 
 export function AuthProvider({ children }: AuthProviderPropTypes) {
+  const [currentUser, setCurrentUser] = useState('')
   const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
@@ -35,6 +37,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
       )
       .then(() => {
         setIsAuthenticated(true)
+        setCurrentUser(data.email)
         toast.success('Success!')
         navigate('/main/dashboard')
         console.log('Success!')
@@ -53,6 +56,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
       })
       .then(() => {
         setIsAuthenticated(false)
+        setCurrentUser('')
         toast.success('Logged out')
         navigate('/login')
         console.log('Successfully logged out')
@@ -64,7 +68,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
   }
 
   return (
-    <AuthContext.Provider value={{ login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ login, logout, isAuthenticated, currentUser }}>
       {children}
     </AuthContext.Provider>
   )
