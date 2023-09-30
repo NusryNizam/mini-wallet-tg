@@ -42,6 +42,11 @@ const Login = () => {
     // navigate(path)
     console.log(path)
 
+    if(formData.email === '' || formData.password === '') {
+      Telegram.showAlert('Please make sure to all the fields are filled')
+      return
+    }
+
     setIsLoading(true)
     login(formData)
 

@@ -28,6 +28,10 @@ const Signup = () => {
     console.log(formData, navigateTo)
     // navigate(path)
     console.log(path)
+    if(formData.name === '' || formData.email === '' || formData.password === '') {
+      Telegram.showAlert('Please make sure all the fields are filled')
+      return
+    }
     setIsLoading(true)
 
     axios
