@@ -1,8 +1,9 @@
 let apiUrl = ''
-if(import.meta.env.MODE === 'development') {
-    apiUrl = 'http://localhost:8080'
+
+if (import.meta.env.MODE === 'development') {
+  apiUrl = import.meta.env.VITE_API_URL_DEV
 } else {
-    apiUrl = import.meta.env.VITE_API_URL
+  apiUrl = import.meta.env.VITE_API_URL
 }
 
-export default apiUrl;
+export default apiUrl
