@@ -7,6 +7,7 @@ import { TelegramContext } from '../../context/TelegramContext'
 import axios from 'axios'
 import apiUrl from '../../utils/base'
 import EntryInterface from '../../interfaces/entry.interface'
+import { toast } from 'react-toastify'
 
 const Finances = () => {
   const [list, setList] = useState<EntryInterface[]>([])
@@ -16,7 +17,6 @@ const Finances = () => {
     setNavigationPath('add')
     Telegram.BackButton.hide()
     Telegram.MainButton.hide()
-    console.log('inside finances')
 
     getEntries()
   }, [])
@@ -25,11 +25,12 @@ const Finances = () => {
     axios
       .get<EntryInterface[]>(`${apiUrl}/entries`)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setList(res.data)
       })
       .catch((err) => {
-        console.log(err)
+        toast.error('Network error')
+        console.log(err.message)
       })
   }
 
@@ -51,7 +52,7 @@ const Finances = () => {
       <h2 className="title">Finances</h2>
       <div className="list">
         {list.length > 0 ? (
-          list.map((item) => <ListItem key={item.id} {...item} />)
+          list.map((item) => <ListItem key={item._id} {...item} />)
         ) : (
           <p>You haven't added any item yet.</p>
         )}

@@ -3,6 +3,10 @@ import './AddFinancesForm.css'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { TelegramContext } from '../../context/TelegramContext'
 import { AuthContext, AuthContextType } from '../../context/AuthContext'
+import axios from 'axios'
+import apiUrl from '../../utils/base'
+import { ToastContainer, toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 // import { TelegramContext } from '../../context/TelegramContext'
 // import { useNavigate } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
@@ -11,7 +15,11 @@ const categories = ['Income', 'Expense']
 
 const AddFinancesForm = () => {
   let { Telegram } = useContext(TelegramContext)
-  let { currentUserId } = useContext<AuthContextType>(AuthContext as Context<AuthContextType>)
+  let { currentUserId } = useContext<AuthContextType>(
+    AuthContext as Context<AuthContextType>
+  )
+
+  const navigate = useNavigate()
 
   // useEffect(() => {
   //   setNavigationPath('')
@@ -28,7 +36,7 @@ const AddFinancesForm = () => {
 
   const [formData, setFormData] = useState({
     user: currentUserId,
-    financeType: '',
+    name: '',
     category: 'income',
     amount: '',
     date: '',
@@ -36,23 +44,28 @@ const AddFinancesForm = () => {
 
   const handleInput = (e: React.FormEvent) => {
     const { name, value } = e.target as HTMLInputElement
-    console.log(name, value)
     setFormData((prev) => ({ ...prev, [name]: value }))
-
-  
-
-    
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log(formData)
     e.preventDefault()
 
-    const { financeType, category, amount, date} = formData
-    if(financeType === '' || category === '' || amount === '' || date === '' ) {
+    const { name, category, amount, date } = formData
+    if (name === '' || category === '' || amount === '' || date === '') {
       Telegram.showAlert('Please fill all the fields')
       return
     }
+
+    axios.post(`${apiUrl}/entries`, formData)
+    .then(res => {
+      toast.success(res.data.message)
+      navigate('/main/finances')
+    })
+    .catch(err => {
+      console.log(err)
+      toast.error(`Error: ${err.data.message}`)
+    })
     // Telegram.setItem('laptop', 300000)
     // Telegram.PopupParams.title = 'Are you sure?'
     // Telegram.PopupParams.description = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
@@ -65,22 +78,26 @@ const AddFinancesForm = () => {
   return (
     <div className="AddFinancesForm">
       <h2 className="title">Add Finances</h2>
-      <form className="add-finances-form" onSubmit={e => handleSubmit(e)}>
+      <form className="add-finances-form" onSubmit={(e) => handleSubmit(e)}>
         <div className="input-group">
-          <label htmlFor="financeType">Title</label>
+          <label htmlFor="name">Title</label>
           <input
             type="text"
-            id="financeType"
-            name="financeType"
+            id="name"
+            name="name"
             required
             onChange={(e) => handleInput(e)}
-            value={formData.financeType}
+            value={formData.name}
           />
         </div>
         <div className="input-group">
           <label htmlFor="category">Category:</label>
           <select name="category" id="category" onChange={handleInput}>
-            {categories.map(category => <option key={category} value={category.toLowerCase()} >{category}</option>)}
+            {categories.map((category) => (
+              <option key={category} value={category.toLowerCase()}>
+                {category}
+              </option>
+            ))}
           </select>
         </div>
         <div className="input-group">
@@ -110,6 +127,7 @@ const AddFinancesForm = () => {
         <br />
         <CustomButton isSubmitType={true}>Add</CustomButton>
       </form>
+      <ToastContainer position="top-right" />
     </div>
   )
 }

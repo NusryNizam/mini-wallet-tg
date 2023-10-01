@@ -3,12 +3,24 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import image from '../../assets/images/image.png'
 import logo from '../../assets/images/mini-wallet-logo.png'
 import './Onboarding.css'
-import { useContext, useEffect } from 'react'
+import { Context, useContext, useEffect } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
+import { AuthContext, AuthContextType } from '../../context/AuthContext'
 
 const Onboarding = () => {
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
-
+  const { isAuthenticated } = useContext<AuthContextType>(
+    AuthContext as Context<AuthContextType>
+  )
+  
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/main/dashboard')
+    }
+  }, [])
+  
   useEffect(() => {
     Telegram.enableClosingConfirmation()
     setNavigationPath('/login')
@@ -18,10 +30,8 @@ const Onboarding = () => {
     //   .setText('Get Started')
     //   .onClick(() => handleClick('/login'))
     Telegram.MainButton.disable()
-
   }, [navigateTo])
 
-  const navigate = useNavigate()
   const handleClick = (path: string) => {
     navigate(path)
   }
@@ -38,7 +48,9 @@ const Onboarding = () => {
           Manage and visualize your day-to-day finances inside Telegram without
           the hassle
         </h3>
-        <CustomButton onClick={() => handleClick('/login')}>Get Started</CustomButton>
+        <CustomButton onClick={() => handleClick('/login')}>
+          Get Started
+        </CustomButton>
       </section>
     </div>
   )

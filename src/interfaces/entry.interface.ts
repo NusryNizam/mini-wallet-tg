@@ -1,5 +1,5 @@
 export default interface EntryInterface {
-    id: string
+    _id: string
     name: string
     date: string
     amount: number

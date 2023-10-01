@@ -10,9 +10,11 @@ import { AuthContext, AuthContextType } from '../../context/AuthContext'
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false)
-  
+
   const navigate = useNavigate()
-  let { setToken } = useContext<AuthContextType>(AuthContext as Context<AuthContextType>)
+  let { setToken, isAuthenticated } = useContext<AuthContextType>(
+    AuthContext as Context<AuthContextType>
+  )
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
 
   useEffect(() => {
@@ -22,6 +24,8 @@ const Signup = () => {
       .enable()
       .setText('Signup')
       .onClick(() => handleSubmit('/main/dashboard'))
+
+    if (isAuthenticated) navigate('/main/dashboard')
   }, [])
 
   function goBack() {
@@ -32,7 +36,11 @@ const Signup = () => {
     console.log(formData, navigateTo)
     // navigate(path)
     console.log(path)
-    if(formData.name === '' || formData.email === '' || formData.password === '') {
+    if (
+      formData.name === '' ||
+      formData.email === '' ||
+      formData.password === ''
+    ) {
       Telegram.showAlert('Please make sure all the fields are filled')
       return
     }
@@ -125,7 +133,9 @@ const Signup = () => {
           />
         </div>
         <br />
-        <CustomButton isLoading={isLoading} isSubmitType={true}>Signup</CustomButton>
+        <CustomButton isLoading={isLoading} isSubmitType={true}>
+          Signup
+        </CustomButton>
       </form>
       <br />
       <small className="small-text">

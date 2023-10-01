@@ -10,7 +10,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
-  const { login } = useContext<AuthContextType>(
+  const { login, isAuthenticated} = useContext<AuthContextType>(
     AuthContext as Context<AuthContextType>
   )
 
@@ -22,6 +22,8 @@ const Login = () => {
     //   .setText('Login')
     //   .onClick(() => handleSubmit('/main/dashboard'))
     Telegram.MainButton.disable()
+
+    if(isAuthenticated) navigate('/main/dashboard')
   }, [])
 
   const [formData, setFormData] = useState({

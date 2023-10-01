@@ -20,8 +20,8 @@ type AuthProviderPropTypes = {
 }
 
 export function AuthProvider({ children }: AuthProviderPropTypes) {
-  const [currentUser, setCurrentUser] = useState('')
-  const [currentUserId, setCurrentUserId] = useState('')
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem('email') || '')
+  const [currentUserId, setCurrentUserId] = useState(localStorage.getItem('user') || '')
   const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('jwt'))
   const [token, setToken] = useState(localStorage.getItem('jwt') || '')
@@ -67,13 +67,18 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
         setCurrentUserId(res.data.user)
         setToken(res.data.token)
         localStorage.setItem('jwt', res.data.token)
+        localStorage.setItem('user', res.data.user)
+        localStorage.setItem('email', data.email)
         toast.success('Success!')
-        navigate('/main/dashboard')
         console.log('Success!')
+        navigate('/main/dashboard')
+
       })
       .catch((err) => {
         toast.error(`Error: ${err.response.data.error}`)
         console.log(err.response.data.error)
+      })
+      .finally(() => {
       })
   }
 
@@ -90,6 +95,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
         setCurrentUserId('')
         setToken('')
         localStorage.setItem('jwt', '')
+        localStorage.setItem('user', '')
         toast.success('Logged out')
         navigate('/login')
         console.log('Successfully logged out')
