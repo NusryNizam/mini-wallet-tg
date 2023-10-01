@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import apiUrl from '../utils/base'
@@ -9,6 +9,8 @@ export type AuthContextType = {
   logout: () => void
   isAuthenticated: boolean
   currentUser: string
+  currentUserId: string
+  setToken: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null)
@@ -19,8 +21,31 @@ type AuthProviderPropTypes = {
 
 export function AuthProvider({ children }: AuthProviderPropTypes) {
   const [currentUser, setCurrentUser] = useState('')
+  const [currentUserId, setCurrentUserId] = useState('')
   const navigate = useNavigate()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('jwt'))
+  const [token, setToken] = useState(localStorage.getItem('jwt') || '')
+  
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`
+
+  useEffect(() => {
+    // Check if the token is present in localStorage
+    const storedToken = localStorage.getItem('jwt');
+
+    if (storedToken) {
+      // If token is present, update state and axios header
+      setIsAuthenticated(true);
+      setToken(storedToken);
+      axios.defaults.headers.common.Authorization = `Bearer ${storedToken}`;
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   const storedToken = localStorage.getItem('jwt')
+  //   if(storedToken !== token) {
+  //     setToken(storedToken || '')
+  //   }
+  // }, [token])
 
   const login = (data: { email: string; password: string }) => {
     axios
@@ -35,9 +60,13 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
           headers: { 'Content-Type': 'application/json' },
         }
       )
-      .then(() => {
+      .then((res) => {
         setIsAuthenticated(true)
+        console.log(res.data)
         setCurrentUser(data.email)
+        setCurrentUserId(res.data.user)
+        setToken(res.data.token)
+        localStorage.setItem('jwt', res.data.token)
         toast.success('Success!')
         navigate('/main/dashboard')
         console.log('Success!')
@@ -55,8 +84,12 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
         headers: { 'Content-Type': 'application/json' },
       })
       .then(() => {
+        axios.defaults.headers.common.Authorization = '';
         setIsAuthenticated(false)
         setCurrentUser('')
+        setCurrentUserId('')
+        setToken('')
+        localStorage.setItem('jwt', '')
         toast.success('Logged out')
         navigate('/login')
         console.log('Successfully logged out')
@@ -68,7 +101,7 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
   }
 
   return (
-    <AuthContext.Provider value={{ login, logout, isAuthenticated, currentUser }}>
+    <AuthContext.Provider value={{ login, logout, isAuthenticated, currentUser, currentUserId, setToken}}>
       {children}
     </AuthContext.Provider>
   )

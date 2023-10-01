@@ -2,19 +2,36 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import FloatingActionButton from '../../components/FloatingActionButton/FloatingActionButton'
 import ListItem from '../../components/ListItem/ListItem'
 import './Finances.css'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
+import axios from 'axios'
+import apiUrl from '../../utils/base'
+import EntryInterface from '../../interfaces/entry.interface'
 
 const Finances = () => {
+  const [list, setList] = useState<EntryInterface[]>([])
   let { Telegram, setNavigationPath } = useContext(TelegramContext)
 
   useEffect(() => {
     setNavigationPath('add')
     Telegram.BackButton.hide()
     Telegram.MainButton.hide()
-    console.log('inside finances');
-    
+    console.log('inside finances')
+
+    getEntries()
   }, [])
+
+  const getEntries = () => {
+    axios
+      .get<EntryInterface[]>(`${apiUrl}/entries`)
+      .then((res) => {
+        console.log(res.data)
+        setList(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   const navigate = useNavigate()
   // const handleClick = (path: string) => {
@@ -25,7 +42,6 @@ const Finances = () => {
     // navigate('add')
     navigate('add-finance')
 
-
     // Telegram.showAlert('alert!')
     // Telegram.BackButton.show()
   }
@@ -34,21 +50,11 @@ const Finances = () => {
     <div className="Finances">
       <h2 className="title">Finances</h2>
       <div className="list">
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
+        {list.length > 0 ? (
+          list.map((item) => <ListItem key={item.id} {...item} />)
+        ) : (
+          <p>You haven't added any item yet.</p>
+        )}
       </div>
       <div className="button-container">
         <FloatingActionButton title="Add" onClick={openBottomSheet}>

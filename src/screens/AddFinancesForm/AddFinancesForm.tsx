@@ -1,12 +1,17 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, Context, useContext, useState } from 'react'
 import './AddFinancesForm.css'
 import CustomButton from '../../components/CustomButton/CustomButton'
+import { TelegramContext } from '../../context/TelegramContext'
+import { AuthContext, AuthContextType } from '../../context/AuthContext'
 // import { TelegramContext } from '../../context/TelegramContext'
 // import { useNavigate } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 
+const categories = ['Income', 'Expense']
+
 const AddFinancesForm = () => {
-  // let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+  let { Telegram } = useContext(TelegramContext)
+  let { currentUserId } = useContext<AuthContextType>(AuthContext as Context<AuthContextType>)
 
   // useEffect(() => {
   //   setNavigationPath('')
@@ -22,19 +27,32 @@ const AddFinancesForm = () => {
   // }
 
   const [formData, setFormData] = useState({
+    user: currentUserId,
     financeType: '',
-    category: '',
+    category: 'income',
     amount: '',
     date: '',
   })
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+  const handleInput = (e: React.FormEvent) => {
+    const { name, value } = e.target as HTMLInputElement
+    console.log(name, value)
     setFormData((prev) => ({ ...prev, [name]: value }))
+
+  
+
+    
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log(formData)
+    e.preventDefault()
+
+    const { financeType, category, amount, date} = formData
+    if(financeType === '' || category === '' || amount === '' || date === '' ) {
+      Telegram.showAlert('Please fill all the fields')
+      return
+    }
     // Telegram.setItem('laptop', 300000)
     // Telegram.PopupParams.title = 'Are you sure?'
     // Telegram.PopupParams.description = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
@@ -47,9 +65,9 @@ const AddFinancesForm = () => {
   return (
     <div className="AddFinancesForm">
       <h2 className="title">Add Finances</h2>
-      <form className="add-finances-form" onSubmit={handleSubmit}>
+      <form className="add-finances-form" onSubmit={e => handleSubmit(e)}>
         <div className="input-group">
-          <label htmlFor="financeType">Finance Type</label>
+          <label htmlFor="financeType">Title</label>
           <input
             type="text"
             id="financeType"
@@ -61,8 +79,8 @@ const AddFinancesForm = () => {
         </div>
         <div className="input-group">
           <label htmlFor="category">Category:</label>
-          <select name="category" id="category">
-            <option value={formData.category}>Rent</option>
+          <select name="category" id="category" onChange={handleInput}>
+            {categories.map(category => <option key={category} value={category.toLowerCase()} >{category}</option>)}
           </select>
         </div>
         <div className="input-group">

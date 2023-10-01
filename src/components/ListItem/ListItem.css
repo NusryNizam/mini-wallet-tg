@@ -37,6 +37,14 @@
     font-weight: bold;
 }
 
-.ListItem svg {
+/* .ListItem svg {
     fill: var(--tg-theme-text-color)
+} */
+
+.ListItem svg.income {
+    fill: #44ed38
+}
+
+.ListItem svg.expense {
+    fill: #ed3838;
 }

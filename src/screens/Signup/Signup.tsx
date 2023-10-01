@@ -1,16 +1,20 @@
 import { Link, useNavigate } from 'react-router-dom'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import './Signup.css'
-import { ChangeEvent, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, Context, useContext, useEffect, useState } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import apiUrl from '../../utils/base'
+import { AuthContext, AuthContextType } from '../../context/AuthContext'
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false)
+  
   const navigate = useNavigate()
+  let { setToken } = useContext<AuthContextType>(AuthContext as Context<AuthContextType>)
   let { Telegram, navigateTo, setNavigationPath } = useContext(TelegramContext)
+
   useEffect(() => {
     Telegram.BackButton.show().onClick(goBack)
     setNavigationPath('/main/dashboard')
@@ -47,7 +51,8 @@ const Signup = () => {
           headers: { 'Content-Type': 'application/json' },
         }
       )
-      .then(() => {
+      .then((res) => {
+        setToken(res.data.token)
         toast.success('Success!')
         toast('Redirecting to login.. Please wait')
         setTimeout(() => {
