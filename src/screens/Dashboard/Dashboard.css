@@ -8,3 +8,17 @@
   align-items: stretch;
   gap: 1rem;
 }
+
+.row {
+  padding-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--tg-theme-bg-color) !important;
+  margin-right: 6px;
+}
