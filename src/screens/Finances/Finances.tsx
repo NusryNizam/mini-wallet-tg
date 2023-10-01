@@ -2,16 +2,20 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import FloatingActionButton from '../../components/FloatingActionButton/FloatingActionButton'
 import ListItem from '../../components/ListItem/ListItem'
 import './Finances.css'
-import { useContext, useEffect, useState } from 'react'
+import { Context, useContext, useEffect } from 'react'
 import { TelegramContext } from '../../context/TelegramContext'
 import axios from 'axios'
 import apiUrl from '../../utils/base'
 import EntryInterface from '../../interfaces/entry.interface'
 import { toast } from 'react-toastify'
+import { ListContext, ListContextType } from '../../context/ListContext'
 
 const Finances = () => {
-  const [list, setList] = useState<EntryInterface[]>([])
+  // const [list, setList] = useState<EntryInterface[]>([])
   let { Telegram, setNavigationPath } = useContext(TelegramContext)
+  const { list, setList } = useContext<ListContextType>(
+    ListContext as Context<ListContextType>
+  )
 
   useEffect(() => {
     setNavigationPath('add')
@@ -21,12 +25,16 @@ const Finances = () => {
     getEntries()
   }, [])
 
+  useEffect(() => {
+    
+  }, [list])
+
   const getEntries = () => {
     axios
       .get<EntryInterface[]>(`${apiUrl}/entries`)
       .then((res) => {
-        // console.log(res.data)
-        setList(res.data)
+        console.log(res.data)
+        setList(prev => [...prev, ...res.data])
       })
       .catch((err) => {
         toast.error('Network error')

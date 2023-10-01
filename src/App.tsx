@@ -18,6 +18,7 @@ import { AuthProvider } from './context/AuthContext'
 
 import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
+import { ListProvider } from './context/ListContext'
 
 function App() {
   const Telegram = (window as any).Telegram.WebApp
@@ -57,7 +58,9 @@ function App() {
                   path="finances"
                   element={
                     <ProtectedRoute redirectPath="/login">
-                      <Finances />
+                      <ListProvider>
+                        <Finances />
+                      </ListProvider>
                     </ProtectedRoute>
                   }
                   children={

@@ -22,10 +22,11 @@ type AuthProviderPropTypes = {
 export function AuthProvider({ children }: AuthProviderPropTypes) {
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('email') || '')
   const [currentUserId, setCurrentUserId] = useState(localStorage.getItem('user') || '')
-  const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('jwt'))
   const [token, setToken] = useState(localStorage.getItem('jwt') || '')
   
+  const navigate = useNavigate()
+
   axios.defaults.headers.common.Authorization = `Bearer ${token}`
 
   useEffect(() => {
@@ -39,13 +40,6 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
       axios.defaults.headers.common.Authorization = `Bearer ${storedToken}`;
     }
   }, []);
-
-  // useEffect(() => {
-  //   const storedToken = localStorage.getItem('jwt')
-  //   if(storedToken !== token) {
-  //     setToken(storedToken || '')
-  //   }
-  // }, [token])
 
   const login = (data: { email: string; password: string }) => {
     axios
@@ -77,8 +71,6 @@ export function AuthProvider({ children }: AuthProviderPropTypes) {
       .catch((err) => {
         toast.error(`Error: ${err.response.data.error}`)
         console.log(err.response.data.error)
-      })
-      .finally(() => {
       })
   }
 

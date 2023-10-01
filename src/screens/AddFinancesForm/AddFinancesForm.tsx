@@ -7,6 +7,8 @@ import axios from 'axios'
 import apiUrl from '../../utils/base'
 import { ToastContainer, toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { ListContextType, ListContext } from '../../context/ListContext'
+import EntryInterface from '../../interfaces/entry.interface'
 // import { TelegramContext } from '../../context/TelegramContext'
 // import { useNavigate } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
@@ -17,6 +19,10 @@ const AddFinancesForm = () => {
   let { Telegram } = useContext(TelegramContext)
   let { currentUserId } = useContext<AuthContextType>(
     AuthContext as Context<AuthContextType>
+  )
+
+  const { setList } = useContext<ListContextType>(
+    ListContext as Context<ListContextType>
   )
 
   const navigate = useNavigate()
@@ -57,23 +63,19 @@ const AddFinancesForm = () => {
       return
     }
 
-    axios.post(`${apiUrl}/entries`, formData)
-    .then(res => {
-      toast.success(res.data.message)
-      navigate('/main/finances')
-    })
-    .catch(err => {
-      console.log(err)
-      toast.error(`Error: ${err.data.message}`)
-    })
-    // Telegram.setItem('laptop', 300000)
-    // Telegram.PopupParams.title = 'Are you sure?'
-    // Telegram.PopupParams.description = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-    // const okBtn = {text: 'Bleh', type: 'ok'}
-    // Telegram.PopupParams.buttons = [okBtn]
+    axios
+      .post(`${apiUrl}/entries`, formData)
+      .then((res) => {
+        toast.success(res.data.message)
+        const newData = {...formData, _id: formData.user} as unknown
+        setList(prev => [...prev, newData as EntryInterface])
+        navigate('/main/finances')
+      })
+      .catch((err) => {
+        console.log(err)
+        toast.error(`Error: ${err.data.message}`)
+      })
 
-    // Telegram.showPopup()
-    // navigate('../')
   }
   return (
     <div className="AddFinancesForm">
